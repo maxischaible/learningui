@@ -6,14 +6,15 @@ const Video: React.FC = () => {
 
   return (
     <div className="w-full flex-grow flex items-center">
-      <div className="w-full h-auto text-left text-[16px] text-darkgray font-inter relative">
-        <img className="w-full h-auto object-cover" alt="" src="Frame.png" />
-        <div className="absolute bottom-4 left-4 right-4 flex justify-between items-center p-4">
-          <button onClick={toggleView} className="bg-blue-500 text-white p-2 rounded">
-            Expand
-          </button>
-          <span className="font-extrabold">4:01 / 6:24</span>
-        </div>
+      <div className="w-full h-full text-left text-[16px] text-darkgray font-inter relative">
+        <iframe
+          className="w-full h-full"
+          src="https://fastaimoviespublic.blob.core.windows.net/videos/18576303-bffc-495d-82c3-f22229532bab/69e2248d-ce0d-4d18-89f4-1d989e513926/a5869008-2955-4630-9780-e6be5e24d969/index.html"
+          frameBorder="0"
+          allowFullScreen
+          title="Video Player"
+          style={{ overflow: 'hidden' }}
+        ></iframe>
       </div>
     </div>
   );
