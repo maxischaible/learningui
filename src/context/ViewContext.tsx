@@ -42,7 +42,7 @@ interface ViewContextType {
 const ViewContext = createContext<ViewContextType | undefined>(undefined);
 
 export const ViewProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [isExpanded, setIsExpanded] = useState(true);
+  const [isExpanded, setIsExpanded] = useState(false);
   const [videos, setVideos] = useState<Video[]>([]);
   const [summaryData, setSummaryData] = useState<SummaryData | null>(null);
   const [linkedElements, setLinkedElements] = useState<LinkedElement[]>([]);
