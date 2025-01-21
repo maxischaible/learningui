@@ -9,6 +9,6 @@ export const fetchVideos = async (): Promise<Video[]> => {
         { videoTitle: "Data collection of refugees", videoFramePath: "video1.PNG" },
         { videoTitle: "Modify existing refugees", videoFramePath: "video2.PNG" },
         { videoTitle: "Add new refugees", videoFramePath: "video3.PNG" },
-        { videoTitle: "How to Get Your First Customers", videoFramePath: "video4.PNG" },
+        { videoTitle: "Invite new Employeess", videoFramePath: "video4.PNG" },
     ];
 };
