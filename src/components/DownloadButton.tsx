@@ -4,9 +4,10 @@ interface DownloadButtonProps {
   label: string;
   filePath: string;
   icon: string;
+  onClick: () => void;
 }
 
-const DownloadButton: React.FC<DownloadButtonProps> = ({ label, filePath, icon }) => {
+const DownloadButton: React.FC<DownloadButtonProps> = ({ label, filePath, icon, onClick }) => {
   const handleDownload = () => {
     const link = document.createElement("a");
     link.href = filePath;
@@ -14,6 +15,8 @@ const DownloadButton: React.FC<DownloadButtonProps> = ({ label, filePath, icon }
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+
+    onClick();
   };
 
   return (

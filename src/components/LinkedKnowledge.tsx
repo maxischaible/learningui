@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { useViewContext } from "../context/ViewContext";
 import UploadModal from "./UploadModal";
+import ReactGA from 'react-ga4';
 
 const LinkedKnowledge: React.FC = () => {
   const { linkedElements } = useViewContext();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleElementClick = (element: { link: string; isWebLink: boolean }) => {
+  const handleElementClick = (element: { link: string; isWebLink: boolean; title: string }) => {
     if (element.isWebLink) {
       window.open(element.link, "_blank");
     } else {
@@ -16,6 +17,13 @@ const LinkedKnowledge: React.FC = () => {
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
+
+      // Log the download event in Google Analytics
+      ReactGA.event({
+        category: 'Linked Knowledge',
+        action: 'Download',
+        label: element.title, // Log the title of the element
+      });
     }
   };
 
