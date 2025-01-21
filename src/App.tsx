@@ -8,7 +8,7 @@ import { useViewContext } from "./context/ViewContext";
 import Courses from "./components/Courses";
 import { Route, Routes, useLocation } from "react-router-dom";
 import Knowledge from "./components/Knowledge";
-
+import ReactGA from 'react-ga4';
 function App() {
   const { isExpanded } = useViewContext();
   const location = useLocation();
@@ -22,6 +22,11 @@ function App() {
       setSelectedSection(null);
     }
   }, []);
+  useEffect(() => {
+    ReactGA.initialize('G-96T9B1QEVK');
+    // To Report Page View 
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname + window.location.search });
+  }, [])
 
   return (
     <div className="w-full h-screen flex flex-col bg-white text-left text-base text-black font-inter">

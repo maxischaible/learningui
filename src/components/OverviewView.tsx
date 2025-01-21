@@ -20,7 +20,7 @@ const MacBookPro16MainScreen: React.FC = () => {
         <div className="flex flex-grow h-full">
           <div className="flex-1 h-full pr-3" style={{ boxSizing: 'border-box' }}>
             <div className="flex flex-col h-full bg-gray-100 rounded-lg">
-              <Title title="Shared Knowledge" icon="/Knowledge.svg" />
+              <Title title="Shared Knowledge" icon="/LinkedKnowledge.svg" />
               <div className="flex-grow overflow-y-auto h-0">
                 <LinkedKnowledge />
               </div>
