@@ -13,7 +13,7 @@ const Video: React.FC = () => {
           frameBorder="0"
           allowFullScreen
           title="Video Player"
-          style={{ overflow: 'hidden' }}
+          style={{ overflow: 'hidden', minHeight: '600px' }}
         ></iframe>
       </div>
     </div>
