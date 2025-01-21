@@ -23,7 +23,7 @@ function App() {
     }
   }, []);
   useEffect(() => {
-    ReactGA.initialize('G-96T9B1QEVK');
+    ReactGA.initialize('G-HK23L08DTR');
     // To Report Page View 
     ReactGA.send({ hitType: "pageview", page: window.location.pathname + window.location.search });
   }, [])
