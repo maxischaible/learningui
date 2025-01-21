@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useViewContext } from "../context/ViewContext";
 import { Comment } from "../types/Comment";
+import ReactGA from 'react-ga4';
 
 const CommentItem: React.FC<{ comment: Comment; index: number }> = ({ comment, index }) => {
   const { updateComment } = useViewContext();
@@ -13,6 +14,13 @@ const CommentItem: React.FC<{ comment: Comment; index: number }> = ({ comment, i
       number_thumbs_up: comment.number_thumbs_up + 1,
     };
     updateComment(index, updatedComment);
+
+    // Log the thumbs up event in Google Analytics
+    ReactGA.event({
+      category: 'Comments',
+      action: 'Thumbs Up',
+      label: comment.text
+    });
   };
 
   const handleReply = () => {
@@ -105,6 +113,13 @@ const Comments: React.FC<{ knowledgePage: boolean }> = ({ knowledgePage }) => {
       };
       addComment(newComment);
       setNewCommentText("");
+
+      // Log the new comment event in Google Analytics
+      ReactGA.event({
+        category: 'Comments',
+        action: 'Add Comment',
+        label: newCommentText
+      });
     }
   };
 

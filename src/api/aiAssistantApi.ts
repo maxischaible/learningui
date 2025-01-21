@@ -11,7 +11,7 @@ export const restoreChatHistory = async () => {
 };
 
 export const getAnswer = async (question: string): Promise<string> => {
-  if (question === "How do I change the Birthday?") return "A";
-  if (question === "How do I change the entry?") return "B";
-  return "C";
+  if (question === "How do I change the Birthday?") return "By clicking on the Birthday field and selecting the desired date.";
+  if (question === "How do I change the entry?") return "You can change the entry by clicking on the entry field and selecting the desired entry.";
+  return "I'm sorry, I didn't understand your question. Please try again.";
 };

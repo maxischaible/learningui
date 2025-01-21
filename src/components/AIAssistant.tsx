@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useViewContext } from "../context/ViewContext";
+import ReactGA from 'react-ga4';
 
 const AIAssistant: React.FC<{ knowledgePage: boolean }> = ({ knowledgePage }) => {
   const { chatHistory, recommendedQuestions, addChatMessage, fetchAnswer } = useViewContext();
@@ -8,6 +9,14 @@ const AIAssistant: React.FC<{ knowledgePage: boolean }> = ({ knowledgePage }) =>
   const handleAskQuestion = async () => {
     if (question.trim()) {
       addChatMessage({ role: "user", type: "text", text: question });
+
+      // Log the ask question event in Google Analytics
+      ReactGA.event({
+        category: 'Questions',
+        action: 'Ask Question',
+        label: question
+      });
+
       await fetchAnswer(question);
       setQuestion('');
     }
