@@ -14,8 +14,22 @@ const RecentlyWatched: React.FC = () => {
                         <h3 className="font-bold m-0">{video.title}</h3>
                         <p className="mt-2">{video.subtitle}</p>
                         <div className="flex gap-3">
-                            <DownloadButton label="Summary" filePath={video.summary} icon="/download_icon.svg" />
-                            <DownloadButton label="Mind Map" filePath={video.mindmap} icon="/download_icon.svg" />
+                            <DownloadButton
+                                label="Summary"
+                                filePath={video.summary}
+                                icon="/download_icon.svg"
+                                onClick={() => {
+                                    console.log("Summary download button clicked");
+                                }}
+                            />
+                            <DownloadButton
+                                label="Mind Map"
+                                filePath={video.mindmap}
+                                icon="/download_icon.svg"
+                                onClick={() => {
+                                    console.log("Mind Map download button clicked");
+                                }}
+                            />
                         </div>
                     </div>
                 </div>

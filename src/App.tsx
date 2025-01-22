@@ -9,6 +9,8 @@ import Courses from "./components/Courses";
 import { Route, Routes, useLocation } from "react-router-dom";
 import Knowledge from "./components/Knowledge";
 import ReactGA from 'react-ga4';
+import ProfilePage from './components/ProfilePage';
+
 function App() {
   const { isExpanded } = useViewContext();
   const location = useLocation();
@@ -23,7 +25,7 @@ function App() {
     }
   }, []);
   useEffect(() => {
-    ReactGA.initialize('G-96T9B1QEVK');
+    ReactGA.initialize('G-QD64EYCST5');
     // To Report Page View 
     ReactGA.send({ hitType: "pageview", page: window.location.pathname + window.location.search });
   }, [])
@@ -47,6 +49,7 @@ function App() {
             )
           } />
           <Route path="/knowledge" element={<Knowledge />} />
+          <Route path="/profile" element={<ProfilePage />} />
         </Routes>
       </div>
     </div>

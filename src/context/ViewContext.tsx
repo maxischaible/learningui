@@ -8,6 +8,7 @@ import { getRecommendedQuestions, restoreChatHistory, getAnswer } from '../api/a
 import { fetchCourses, Course } from '../api/coursesApi';
 import { fetchRecentlyWatched } from '../api/recentlyWatchedApi';
 import { RecentlyWatched } from '../types/RecentlyWatched';
+import { getUserData } from '../api/profileAPI';
 
 interface ChatMessage {
   role: "assistant" | "user";
@@ -15,6 +16,18 @@ interface ChatMessage {
   text?: string;
   image_path?: string;
   timestamp?: number;
+}
+
+interface UserData {
+  name: string;
+  email: string;
+  profilePicture?: string;
+  plan?: string;
+  position?: string;
+  company?: string;
+  phone?: string;
+  address?: string;
+  // Weitere Felder hier
 }
 
 interface ViewContextType {
@@ -37,12 +50,15 @@ interface ViewContextType {
   fetchAnswer: (question: string) => Promise<string>;
   courses: Course[];
   recentlyWatchedVideos: RecentlyWatched[];
+  userData: UserData;
+  videoId: string;
+  setVideoId: (id: string) => void;
 }
 
 const ViewContext = createContext<ViewContextType | undefined>(undefined);
 
 export const ViewProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [isExpanded, setIsExpanded] = useState(true);
+  const [isExpanded, setIsExpanded] = useState(false);
   const [videos, setVideos] = useState<Video[]>([]);
   const [summaryData, setSummaryData] = useState<SummaryData | null>(null);
   const [linkedElements, setLinkedElements] = useState<LinkedElement[]>([]);
@@ -52,6 +68,8 @@ export const ViewProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   const [recommendedQuestions, setRecommendedQuestions] = useState<string[]>([]);
   const [courses, setCourses] = useState<Course[]>([]);
   const [recentlyWatchedVideos, setRecentlyWatchedVideos] = useState<RecentlyWatched[]>([]);
+  const [userData, setUserData] = useState<UserData>({ name: '', email: '' });
+  const [videoId, setVideoId] = useState("123e4567-e89b-12d3-a456-426614174000");
   const videoTitle = "Data collection of refugees";
 
   const toggleView = () => {
@@ -83,7 +101,7 @@ export const ViewProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   };
 
   const fetchAnswer = async (question: string) => {
-    const answer = await getAnswer(question);
+    const answer = await getAnswer(question, videoId);
     addChatMessage({ role: "assistant", type: "text", text: answer });
     return answer;
   };
@@ -94,19 +112,19 @@ export const ViewProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       setVideos(videoData);
     };
     const loadSummaryData = async () => {
-      const data = await fetchSummaryData();
+      const data = await fetchSummaryData(videoId);
       setSummaryData(data);
     };
     const loadLinkedElements = async () => {
-      const elements = await fetchLinkedElements();
+      const elements = await fetchLinkedElements(videoId);
       setLinkedElements(elements);
     };
     const loadComments = async () => {
-      const data = await fetchComments();
+      const data = await fetchComments(videoId);
       setComments(data);
     };
     const loadChatHistory = async () => {
-      const history = await restoreChatHistory();
+      const history = await restoreChatHistory(videoId);
       const formattedHistory = history.map(item => ({
         ...item,
         type: item.type as "text" | "image" | "video-timestamp",
@@ -115,7 +133,7 @@ export const ViewProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       setChatHistory(formattedHistory);
     };
     const loadRecommendedQuestions = async () => {
-      const questions = await getRecommendedQuestions();
+      const questions = await getRecommendedQuestions(videoId);
       setRecommendedQuestions(questions);
     };
     const loadCourses = async () => {
@@ -126,6 +144,10 @@ export const ViewProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       const recentlyWatchedVideos = await fetchRecentlyWatched();
       setRecentlyWatchedVideos(recentlyWatchedVideos);
     };
+    const loadUserData = () => {
+      const data = getUserData();
+      setUserData(data);
+    };
     loadVideos();
     loadSummaryData();
     loadLinkedElements();
@@ -134,7 +156,8 @@ export const ViewProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     loadRecommendedQuestions();
     loadCourses();
     loadRecentlyWatchedVideos();
-  }, []);
+    loadUserData();
+  }, [videoId]);
 
   return (
     <ViewContext.Provider value={{
@@ -156,7 +179,10 @@ export const ViewProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       addChatMessage,
       fetchAnswer,
       courses,
-      recentlyWatchedVideos
+      recentlyWatchedVideos,
+      userData,
+      videoId,
+      setVideoId,
     }}>
       {children}
     </ViewContext.Provider>
