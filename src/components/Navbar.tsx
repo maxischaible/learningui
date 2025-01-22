@@ -17,7 +17,7 @@ const Navbar: React.FC<NavbarProps> = ({ selectedSection, setSelectedSection }) 
     { icon: "/Summary.svg", title: "Summary", link: "/" },
     { icon: "/LinkedKnowledge.svg", title: "Linked Knowledge", link: "/" },
     { icon: "/Comments.svg", title: "Comments", link: "/" },
-    { icon: "/BotBlue.svg", title: "AI Assistant", link: "/" },
+    { icon: "/BotBlack.svg", title: "AI Assistant", link: "/" },
   ];
 
   return (
