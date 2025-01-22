@@ -13,30 +13,30 @@ const MacBookPro16MainScreen: React.FC = () => {
       {/* Linke Spalte: 2/3 der Breite */}
       <div className="flex flex-col w-3/5 h-full pr-3" style={{ boxSizing: 'border-box' }}>
         {/* Obere Zeile: Video */}
-        <div className="pb-3" style={{ boxSizing: 'border-box' }}>
+        <div className="flex-grow pb-3" style={{ boxSizing: 'border-box' }}>
           <Video />
         </div>
         {/* Untere Zeile: 3 Spalten */}
-        <div className="flex flex-grow h-full">
-          <div className="flex-1 h-full pr-3" style={{ boxSizing: 'border-box' }}>
+        <div className="flex flex-grow">
+          <div className="flex-1 pr-3" style={{ boxSizing: 'border-box' }}>
             <div className="flex flex-col h-full bg-gray-100 rounded-lg">
-              <Title title="Shared Knowledge" icon="/LinkedKnowledge.svg" />
+              <Title title="Shared Knowledge" icon="/LinkedKnowledgeBlue.svg" />
               <div className="flex-grow overflow-y-auto h-0">
                 <LinkedKnowledge />
               </div>
             </div>
           </div>
-          <div className="flex-1 h-full pr-3" style={{ boxSizing: 'border-box' }}>
+          <div className="flex-1 pr-3" style={{ boxSizing: 'border-box' }}>
             <div className="flex flex-col h-full bg-gray-100 rounded-lg">
-              <Title title="Comments" icon="/Comments.svg" />
+              <Title title="Comments" icon="/CommentsBlue.svg" />
               <div className="flex-grow overflow-y-auto h-0">
                 <Comments knowledgePage={false} />
               </div>
             </div>
           </div>
-          <div className="flex-1 h-full" style={{ boxSizing: 'border-box' }}>
+          <div className="flex-1" style={{ boxSizing: 'border-box' }}>
             <div className="flex flex-col h-full bg-gray-100 rounded-lg">
-              <Title title="Summary" icon="/Summary.svg" />
+              <Title title="Summary" icon="/SummaryBlue.svg" />
               <div className="flex-grow overflow-y-auto h-0">
                 <Summary />
               </div>
@@ -49,7 +49,7 @@ const MacBookPro16MainScreen: React.FC = () => {
         {/* Obere Zeile: VideoHub */}
         <div className="h-1/3 pb-3" style={{ boxSizing: 'border-box' }}>
           <div className="flex flex-col h-full bg-gray-100 rounded-lg">
-            <Title title="Video Hub" icon="/VideoHub.svg" />
+            <Title title="Video Hub" icon="/VideoHubBlue.svg" />
             <div className="flex-grow overflow-y-auto">
               <VideoHub /></div></div>
         </div>

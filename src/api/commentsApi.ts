@@ -1,7 +1,9 @@
 import { Comment } from "../types/Comment";
 
-export const fetchComments = async (): Promise<Comment[]> => {
-    return [
+export const fetchComments = async (videoId: string): Promise<Comment[]> => {
+    
+        if (videoId === "123e4567-e89b-12d3-a456-426614174000") {
+return [
         {
             user_prename: "B",
             user_surname: "M",
@@ -39,5 +41,8 @@ export const fetchComments = async (): Promise<Comment[]> => {
             text: "Great video, learned so much!",
             replies: [],
         },
-    ];
+    ];}
+    else {
+        return []
+    }
 };

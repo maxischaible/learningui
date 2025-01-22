@@ -20,7 +20,7 @@ const DownloadButton: React.FC<DownloadButtonProps> = ({ label, filePath, icon, 
   };
 
   return (
-    <button onClick={handleDownload} className="bg-blue-500 text-white p-2 flex items-center" style={{ borderRadius: '12px' }}>
+    <button onClick={handleDownload} className="bg-blue-500 text-white p-2 flex items-center cursor-pointer" style={{ borderRadius: '12px' }}>
       <img src={icon} alt="icon" className="w-6 h-6 mr-2" />
       {label}
     </button>

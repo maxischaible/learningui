@@ -5,7 +5,7 @@ const Video: React.FC = () => {
   const { toggleView } = useViewContext();
 
   return (
-    <div className="w-full flex-grow flex items-center">
+    <div className="w-full h-full flex-grow flex items-center">
       <div className="w-full h-full text-left text-[16px] text-darkgray font-inter relative">
         <iframe
           className="w-full h-full"
@@ -13,7 +13,7 @@ const Video: React.FC = () => {
           frameBorder="0"
           allowFullScreen
           title="Video Player"
-          style={{ overflow: 'hidden', minHeight: '600px' }}
+          style={{ overflow: 'hidden', height: '100%' }}
         ></iframe>
       </div>
     </div>

@@ -7,10 +7,10 @@ import VideoHub from "./VideoHub";
 import Comments from "./Comments";
 
 const icons: { [key: string]: string } = {
-  "Video Hub": "/VideoHub.svg",
-  "Summary": "/Summary.svg",
-  "Linked Knowledge": "/LinkedKnowledge.svg",
-  "Comments": "/Comments.svg",
+  "Video Hub": "/VideoHubBlue.svg",
+  "Summary": "/SummaryBlue.svg",
+  "Linked Knowledge": "/LinkedKnowledgeBlue.svg",
+  "Comments": "/CommentsBlue.svg",
   "AI Assistant": "/BotBlue.svg",
 };
 

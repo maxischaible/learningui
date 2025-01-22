@@ -3,10 +3,11 @@ import { useViewContext } from "../context/ViewContext";
 import ReactGA from 'react-ga4';
 
 const VideoHub: React.FC = () => {
-  const { videos, currentVideoIndex, setCurrentVideoIndex } = useViewContext();
+  const { videos, currentVideoIndex, setCurrentVideoIndex, setVideoId } = useViewContext();
 
   const handleVideoClick = (index: number) => {
     setCurrentVideoIndex(index + 1);
+    setVideoId(videos[index].videoId);
 
     // Log the video index change event in Google Analytics
     ReactGA.event({

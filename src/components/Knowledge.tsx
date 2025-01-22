@@ -12,7 +12,7 @@ const Knowledge: React.FC = () => {
                 <div className="w-1/2 h-full pr-3" style={{ boxSizing: 'border-box' }}>
                     <div className="h-3/5  pb-3 overflow-y-auto" style={{ boxSizing: 'border-box' }}>
                         <div className="flex flex-col h-full bg-gray-100 rounded-lg">
-                            <Title title="My Comments" icon="/Comments.svg" />
+                            <Title title="My Comments" icon="/CommentsBlue.svg" />
                             <div className="flex-grow overflow-y-auto">
 
                                 <Comments knowledgePage={true} />
@@ -21,7 +21,7 @@ const Knowledge: React.FC = () => {
                     </div>
                     <div className="h-2/5  overflow-y-auto " style={{ boxSizing: 'border-box' }}>
                         <div className="flex flex-col h-full bg-gray-100 rounded-lg">
-                            <Title title="Knowledge" icon="/LinkedKnowledge.svg" />
+                            <Title title="Knowledge" icon="/LinkedKnowledgeBlue.svg" />
                             <div className="flex-grow overflow-y-auto">
 
                                 <CourseKnowledge />
@@ -30,7 +30,7 @@ const Knowledge: React.FC = () => {
                     </div>
                 </div>
                 <div className="w-1/2 h-full bg-gray-100 overflow-y-auto rounded-lg" style={{ boxSizing: 'border-box' }}>
-                    <Title title="Recently Watched" icon="/VideoHub.svg" />
+                    <Title title="Recently Watched" icon="/VideoHubBlue.svg" />
                     <div className="flex-grow overflow-y-auto">
 
                         <RecentlyWatched />

@@ -14,9 +14,11 @@ const NavItem: React.FC<NavItemProps> = ({ icon, title, onClick, link, sidePage 
     <NavLink
       to={link || "#"}
       className={({ isActive }) =>
-        `flex items-center space-x-2 cursor-pointer ${sidePage !== undefined
-          ? (sidePage ? "text-blue-500 border-b-2 border-blue-500" : "text-gray-700")
-          : (isActive ? "text-blue-500 border-b-2 border-blue-500" : "text-gray-700")
+        `flex items-center space-x-2 cursor-pointer ${title === "Help"
+          ? "text-black"
+          : sidePage !== undefined
+            ? (sidePage ? "font-bold border-b-2 text-black" : "text-black")
+            : (isActive ? "font-bold border-b-2 text-black" : "text-black")
         }`
       }
       onClick={onClick}

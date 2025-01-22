@@ -9,6 +9,8 @@ import Courses from "./components/Courses";
 import { Route, Routes, useLocation } from "react-router-dom";
 import Knowledge from "./components/Knowledge";
 import ReactGA from 'react-ga4';
+import ProfilePage from './components/ProfilePage';
+
 function App() {
   const { isExpanded } = useViewContext();
   const location = useLocation();
@@ -47,6 +49,7 @@ function App() {
             )
           } />
           <Route path="/knowledge" element={<Knowledge />} />
+          <Route path="/profile" element={<ProfilePage />} />
         </Routes>
       </div>
     </div>
